@@ -1,0 +1,21 @@
+NB. project: Addons/graphics/viewmat/source
+NB.
+NB. files should be given with their extension.
+NB. path defaults to project directory.
+NB.
+NB. Build     - build script
+NB. Run       - run script
+NB. Source    - source scripts
+
+Build=: 'build.ijs'
+Run=: 'run.ijs'
+Source=: 0 : 0
+init.ijs
+util.ijs
+cc.ijs
+event.ijs
+field.ijs
+methods.ijs
+win.ijs
+zdefs.ijs
+)

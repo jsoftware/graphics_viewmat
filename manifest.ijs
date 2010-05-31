@@ -10,6 +10,10 @@ VERSION=: '1.0.0'
 
 RELEASE=: 'j701'
 
+DEPENDS=: 0 : 0
+graphics/bmp
+)
+
 FILES=: 0 : 0
 viewmat.ijs
 )

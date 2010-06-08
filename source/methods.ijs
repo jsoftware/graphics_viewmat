@@ -37,7 +37,7 @@ NB.*savemat v save viewmat to .bmp file
 savemat=: 3 : 0
 fl=. y
 if. 0 = #fl do.
-  fl=. jpath '~temp\viewmat.bmp'
+  fl=. jpath '~temp/viewmat.bmp'
 end.
 fms=. hforms''
 if. 0=#fms
@@ -70,7 +70,7 @@ NB.
 NB. x = [parentid [;parentname]]
 NB. y = filename
 NB.
-NB. e.g.  viewbmp jpath '~system\examples\data\j.bmp'
+NB. e.g.  viewbmp jpath '~system/examples/data/j.bmp'
 viewbmp=: 3 : 0
 '' viewbmp y
 :

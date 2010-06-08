@@ -25,6 +25,7 @@ NB. =========================================================
 viewmat_close=: 3 : 0
 hremove''
 gtk_widget_destroy window
+if. -.IFGTK do. gtk_main_quit '' end.
 destroy''
 1
 )

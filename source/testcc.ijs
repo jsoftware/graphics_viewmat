@@ -9,7 +9,7 @@ NB.
 NB. dbg 1
 NB. dbstop''
 NB.
-NB. require 'viewmat'
+NB. require 'graphics/viewmat'
 NB.
 NB. NB. =========================================================
 NB. test_gg_paint=: 3 : 0

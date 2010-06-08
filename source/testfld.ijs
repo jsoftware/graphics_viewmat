@@ -1,6 +1,6 @@
 NB. test viewmat field view
 
-require 'trig viewmat'
+require 'trig graphics/viewmat'
 
 NB.*jjota v complex i.
 NB.   jjota 3 4

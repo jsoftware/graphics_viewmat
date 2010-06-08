@@ -2,7 +2,7 @@ NB. lab
 NB.
 NB. these are the J6 lab demos
 
-require 'bmp trig viewmat'
+require 'bmp trig graphics/viewmat'
 
 viewmat ?20 20$2
 viewmat */~ i:3

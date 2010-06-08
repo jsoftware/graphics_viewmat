@@ -2,6 +2,7 @@ NB. viewmat win
 
 NB. =========================================================
 vmrun=: 4 : 0
+if. -.IFGTK do. 'require'~'gui/gtk' end.
 if. 0 > nc <'VMH' do. setvmh '' end.
 SHOW=: 0 NB. set to 1 after first show
 ifRGB=: x -: 'rgb'
@@ -19,6 +20,7 @@ hadd''
 
 NB. =========================================================
 vmwin=: 3 : 0
+if. -.IFGTK do. gtkinit'' end.
 newwindow TITLE
 gtk_window_set_position window,GTK_WIN_POS_CENTER_ALWAYS
 consig3 window;'key-press-event';'viewmat_key_press'
@@ -27,4 +29,5 @@ locGB=: y conew 'jgtkgraph'
 coinsert__locGB coname''
 gtk_container_add window,gtkbox__locGB
 windowfinish''
+if. -.IFGTK do. gtk_main '' end.
 )

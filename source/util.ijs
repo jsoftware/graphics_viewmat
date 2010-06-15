@@ -119,7 +119,7 @@ if. */ (,mat) e. 0 1 do.
     h=. 0 ,: 255 255 255
   end.
   mat=. mat { h
-  
+
 else.
   if. #hue do.
     h=. hue

@@ -2,7 +2,7 @@ require 'bmp'
 
 coclass 'jviewmat'
 coinsert 'jgtk'
-MINWH=: 200 200 
+MINWH=: 200 200
 DEFWH=: 360 360
 destroy=: 3 : 0
 cbfree''
@@ -88,7 +88,7 @@ if. */ (,mat) e. 0 1 do.
     h=. 0 ,: 255 255 255
   end.
   mat=. mat { h
-  
+
 else.
   if. #hue do.
     h=. hue
@@ -295,7 +295,7 @@ empty x vmcc y
 )
 vmrun=: 4 : 0
 if. 0 > nc <'VMH' do. setvmh '' end.
-SHOW=: 0 
+SHOW=: 0
 ifRGB=: x -: 'rgb'
 'DAT MAT ANG TITLE'=: x getvm y
 mat=. finite MAT

@@ -16,5 +16,5 @@ graphics/bmp
 
 FILES=: 0 : 0
 viewmat.ijs
-history.ijs
+history.txt
 )

@@ -1,10 +1,21 @@
-require 'bmp'
+require 'graphics/bmp'
 
 coclass 'jviewmat'
+
 coinsert 'jgtk'
 MINWH=: 200 200
 DEFWH=: 360 360
+
+create=: 3 : 0
+if. -.IFGTK do.
+  require 'gui/gtk'
+  gtkinit_jgtk_''
+end.
+)
 destroy=: 3 : 0
+if. -.IFGTK do.
+  gtk_main_quit''
+end.
 cbfree''
 codestroy''
 )
@@ -110,7 +121,7 @@ hadd=: 3 : 0
 setvmh VMH,~coname''
 )
 hcascade=: 3 : 0
-if. #VMH do.
+if. IFGTK *. 0~:#VMH do.
   loc=. {.VMH
   siz=. 2 3 { getwinpos window
   prv=. 2 {. getwinpos window__loc
@@ -155,6 +166,7 @@ SHOW=: 1
 viewmat_close=: 3 : 0
 hremove''
 gtk_widget_destroy window
+if. -.IFGTK do. gtk_main_quit '' end.
 destroy''
 1
 )
@@ -254,7 +266,7 @@ getbmp''
 savemat=: 3 : 0
 fl=. y
 if. 0 = #fl do.
-  fl=. jpath '~temp\viewmat.bmp'
+  fl=. jpath '~temp/viewmat.bmp'
 end.
 fms=. hforms''
 if. 0=#fms
@@ -285,8 +297,9 @@ if. 2 = 3!:0 dat do. return. end.
 viewmat=: 3 : 0
 '' viewmat y
 :
-a=. conew 'jviewmat'
+a=. '' conew 'jviewmat'
 empty x vmrun__a y
+if. -.IFGTK do. gtk_main '' end.
 )
 viewmatcc=: 3 : 0
 '' viewmatcc y
@@ -295,7 +308,7 @@ empty x vmcc y
 )
 vmrun=: 4 : 0
 if. 0 > nc <'VMH' do. setvmh '' end.
-SHOW=: 0
+SHOW=: 0 
 ifRGB=: x -: 'rgb'
 'DAT MAT ANG TITLE'=: x getvm y
 mat=. finite MAT

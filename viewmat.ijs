@@ -1,8 +1,8 @@
-require 'graphics/bmp'
+require 'graphics/bmp graphics/gl2'
 
 coclass 'jviewmat'
 
-coinsert 'jgtk'
+coinsert 'jgtk jgl2'
 MINWH=: 200 200
 DEFWH=: 360 360
 
@@ -147,10 +147,10 @@ if. #ANG do. mwh vf_show mat return. end.
 mat=. , mwh fitvm mat
 glpixels (0 0, mwh), mat
 )
-paint=: 3 : 0
+viewmat_g_paint=: 3 : 0
 mat=. finite MAT
 'rws cls'=. $mat
-gwh=. gtkwh
+gwh=. gtkwh__gloc
 if. ifRGB > SHOW do.
   glbrush glrgb 0 0 0
   glrect 0 0,gwh
@@ -326,9 +326,8 @@ newwindow TITLE
 gtk_window_set_position window,GTK_WIN_POS_CENTER_ALWAYS
 consig3 window;'key-press-event';'viewmat_key_press'
 consig3 window;'focus-in-event';'viewmat_focus_in'
-locGB=: y conew 'jgtkgraph'
-coinsert__locGB coname''
-gtk_container_add window,gtkbox__locGB
+gloc=: glcanvas 'viewmat';'g';y;coname''
+gtk_container_add window,canvas__gloc
 windowfinish''
 )
 viewmat_z_=: viewmat_jviewmat_

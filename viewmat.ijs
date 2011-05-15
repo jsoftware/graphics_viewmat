@@ -136,6 +136,7 @@ setvmh VMH -. coname''
 setvmh=: 3 : 0
 VMH_jviewmat_=: (~.y) intersect conl 1
 )
+rgb1=: 256&(#. flipwritergb_jbmp_)
 vmcc=: 4 : 0
 ifRGB=: x -: 'rgb'
 'mat gid'=. y
@@ -333,3 +334,4 @@ windowfinish''
 viewmat_z_=: viewmat_jviewmat_
 viewbmp_z_=: viewbmp_jviewmat_
 viewrgb_z_=: 'rgb' & viewmat_jviewmat_
+rgb1_z_=: rgb1_jviewmat_

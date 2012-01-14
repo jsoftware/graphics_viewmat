@@ -309,7 +309,7 @@ empty x vmcc y
 )
 vmrun=: 4 : 0
 if. 0 > nc <'VMH' do. setvmh '' end.
-SHOW=: 0 
+SHOW=: 0
 ifRGB=: x -: 'rgb'
 'DAT MAT ANG TITLE'=: x getvm y
 mat=. finite MAT

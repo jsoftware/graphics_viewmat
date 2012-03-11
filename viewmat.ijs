@@ -327,9 +327,20 @@ newwindow TITLE
 gtk_window_set_position window,GTK_WIN_POS_CENTER_ALWAYS
 consig3 window;'key-press-event';'viewmat_key_press'
 consig3 window;'focus-in-event';'viewmat_focus_in'
-gloc=: glcanvas 'viewmat';'g';y;coname''
+gloc=: glcanvas y;coname''
 gtk_container_add window,canvas__gloc
 windowfinish''
+)
+isigraph_event=: 4 : 0
+widget=. canvas__y
+evt=. >@{.x
+syshandler=. 'viewmat_handler'
+sysevent=. 'viewmat_g_', evt
+sysdefault=. 'viewmat_default'
+wdd=. ;: 'syshandler sysevent sysdefault'
+wdqdata=. (wdd ,. ".&.>wdd)
+evthandler wdqdata
+0
 )
 viewmat_z_=: viewmat_jviewmat_
 viewbmp_z_=: viewbmp_jviewmat_

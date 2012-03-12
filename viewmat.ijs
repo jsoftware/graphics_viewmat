@@ -331,9 +331,8 @@ gloc=: glcanvas y;coname''
 gtk_container_add window,canvas__gloc
 windowfinish''
 )
-isigraph_event=: 4 : 0
-widget=. canvas__y
-evt=. >@{.x
+gtkwidget_event=: 4 : 0
+evt=. >@{.y
 syshandler=. 'viewmat_handler'
 sysevent=. 'viewmat_g_', evt
 sysdefault=. 'viewmat_default'

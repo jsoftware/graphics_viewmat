@@ -151,7 +151,7 @@ glpixels (0 0, mwh), mat
 viewmat_g_paint=: 3 : 0
 mat=. finite MAT
 'rws cls'=. $mat
-gwh=. gtkwh__gloc
+gwh=. glqwh''
 if. ifRGB > SHOW do.
   glbrush glrgb 0 0 0
   glrect 0 0,gwh
@@ -327,8 +327,8 @@ newwindow TITLE
 gtk_window_set_position window,GTK_WIN_POS_CENTER_ALWAYS
 consig3 window;'key-press-event';'viewmat_key_press'
 consig3 window;'focus-in-event';'viewmat_focus_in'
-gloc=: glcanvas y;coname''
-gtk_container_add window,canvas__gloc
+canvas=: glcanvas y;coname''
+gtk_container_add window,canvas
 windowfinish''
 )
 gtkwidget_event=: 4 : 0

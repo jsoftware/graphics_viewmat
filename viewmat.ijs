@@ -317,7 +317,7 @@ if. GUI do.
 else.
   (no_gui_bmp__a'') writebmp jpath '~temp/viewmat.bmp'
   if. UNAME-:'Android' do.
-    2!:1 'android.intent.action.VIEW';(jpath '~temp/viewmat.bmp');'image/image'
+    2!:1 'android.intent.action.VIEW';('file://',jpath '~temp/viewmat.bmp');'image/bitmap'
   end.
   destroy__a ''
 end.

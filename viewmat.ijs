@@ -14,7 +14,7 @@ MINWH=: 200 200
 DEFWH=: 360 360
 
 create=: 3 : 0
-if. GUI *. -.IFGTK do.
+if. GUI > IFGTK+.IFQT do.
   if. 'Android'-:UNAME do.
     require 'gui/android'
   else.
@@ -26,7 +26,8 @@ end.
 destroy=: 3 : 0
 if. GUI do.
   if. 'Android'-:UNAME do.
-  else.
+  elseif. IFQT do.
+  elseif. do.
     if. -.IFGTK do.
       gtk_main_quit''
     end.
@@ -194,7 +195,8 @@ SHOW=: 1
 viewmat_close=: 3 : 0
 hremove''
 if. 'Android'-:UNAME do.
-else.
+elseif. IFQT do.
+elseif. do.
   gtk_widget_destroy window
   if. -.IFGTK do. gtk_main_quit '' end.
 end.
@@ -335,7 +337,7 @@ if. GUI do.
     0 StartActivity_ja_ (>a); 'onDestroy'
   else.
     empty vmrun__a ''
-    if. -.IFGTK do. gtk_main '' end.
+    if. -.IFGTK+.IFQT do. gtk_main '' end.
   end.
 else.
   empty vmrun__a ''
@@ -367,10 +369,19 @@ mwh0=: mwh
 vmwin^:GUI mwh
 hcascade''
 hadd''
+if. IFQT do.
+  wd 'pshow'
+  viewmat_g_paint''
+end.
 )
 vmwin=: 3 : 0
 if. 'Android'-:UNAME do.
-else.
+elseif. IFQT do.
+  wd 'pc viewmat;pn *',TITLE
+  wd 'pmovex 50 100 180 180'
+  wd 'xywh 0 0 360 360;cc g isigraph rightmove bottommove;pas 0 0;pcenter'
+  glpixels 0 0 320 320, ,(320*320)$16bffffff
+elseif. do.
   newwindow TITLE
   gtk_window_set_position window,GTK_WIN_POS_CENTER_ALWAYS
   consig3 window;'key-press-event';'viewmat_key_press'
@@ -380,7 +391,7 @@ else.
   windowfinish''
 end.
 )
-gtkwidget_event=: androidwidget_event=: 4 : 0
+gtkwidget_event=: qtwidget_event=: androidwidget_event=: 4 : 0
 evt=. >@{.y
 syshandler=. 'viewmat_handler'
 sysevent=. 'viewmat_g_', evt

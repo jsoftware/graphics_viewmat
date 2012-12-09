@@ -16,3 +16,6 @@ graphics/viewmat - change history
 
 == 1.0.14 ==
  * android
+
+== 1.0.15 ==
+ * qt

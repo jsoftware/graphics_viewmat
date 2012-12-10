@@ -191,6 +191,7 @@ mat=. , mwh fitvm mat
 glpixels (0 0, mwh), mat
 glpaint''
 SHOW=: 1
+EMPTY
 )
 viewmat_close=: 3 : 0
 hremove''
@@ -371,7 +372,6 @@ hcascade''
 hadd''
 if. IFQT do.
   wd 'pshow'
-  viewmat_g_paint''
 end.
 )
 vmwin=: 3 : 0

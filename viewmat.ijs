@@ -378,9 +378,7 @@ vmwin=: 3 : 0
 if. 'Android'-:UNAME do.
 elseif. IFQT do.
   wd 'pc viewmat;pn *',TITLE
-  wd 'pmovex 50 100 180 180'
-  wd 'xywh 0 0 360 360;cc g isigraph rightmove bottommove;pas 0 0;pcenter'
-  glpixels 0 0 320 320, ,(320*320)$16bffffff
+  wd 'cc g isigraph wh 320 320'
 elseif. do.
   newwindow TITLE
   gtk_window_set_position window,GTK_WIN_POS_CENTER_ALWAYS

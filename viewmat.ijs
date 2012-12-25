@@ -147,6 +147,11 @@ if. GUI *. IFGTK *. 0~:#VMH do.
   (txy,siz) setwinpos window
 end.
 )
+hforms=: 3 : 0
+fms=. <;._2 &> <;._2 wdqpx''
+fms=. fms #~ (1{"1 fms) e. VMH
+fms \: 0 ". &> 4{"1 fms
+)
 hremove=: 3 : 0
 setvmh VMH -. coname''
 )
@@ -287,7 +292,7 @@ if. 0=#fms
 do. mbinfo 'viewmat';'No viewmat forms.' return.
 end.
 wd 'psel ',(<0 1) pick fms
-_2 {. 0 ". wd 'qchildxywhx ',GID
+_2 {. wdqchildxywh GID
 )
 readmat=: 3 : 0
 fms=. hforms''
@@ -316,8 +321,8 @@ do. mbinfo 'viewmat';'No viewmat forms.' return.
 end.
 loc=. (<0 2) { fms
 wd 'psel ',(<0 1) pick fms
-form=. 0 ". wd 'qformx'
-xywh=. 0 ". wd 'qchildxywhx ',GID
+form=. wdqformx''
+xywh=. wdqchildxywh GID
 dif=. 0 0, y - _2 {. xywh
 wd 'pmovex ',":form + dif
 )
@@ -390,7 +395,7 @@ elseif. do.
   windowfinish''
 end.
 )
-gtkwidget_event=: qtwidget_event=: androidwidget_event=: 4 : 0
+isigraph_event=: 4 : 0
 evt=. >@{.y
 syshandler=. 'viewmat_handler'
 sysevent=. 'viewmat_g_', evt

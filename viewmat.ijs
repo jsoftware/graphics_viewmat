@@ -202,6 +202,7 @@ viewmat_close=: 3 : 0
 hremove''
 if. 'Android'-:UNAME do.
 elseif. IFQT do.
+  wd 'pclose'
 elseif. do.
   gtk_widget_destroy window
   if. -.IFGTK do. gtk_main_quit '' end.

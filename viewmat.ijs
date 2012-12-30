@@ -194,7 +194,7 @@ end.
 if. #ANG do. mwh vf_show mat return. end.
 mat=. , mwh fitvm mat
 glpixels (0 0, mwh), mat
-glpaint''
+glpaint^:IFJ6 ''
 SHOW=: 1
 EMPTY
 )
@@ -385,7 +385,7 @@ if. 'Android'-:UNAME do.
 elseif. IFQT do.
   wd 'pc viewmat;pn *',TITLE
   wd 'cc g isigraph'
-  wd 'pmovex 50 100 ', ":mwh0
+  wd 'pmovex _1 _1 ', ":mwh0
 elseif. do.
   newwindow TITLE
   gtk_window_set_position window,GTK_WIN_POS_CENTER_ALWAYS

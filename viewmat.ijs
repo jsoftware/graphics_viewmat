@@ -194,7 +194,6 @@ end.
 if. #ANG do. mwh vf_show mat return. end.
 mat=. , mwh fitvm mat
 glpixels (0 0, mwh), mat
-glpaint^:IFJ6 ''
 SHOW=: 1
 EMPTY
 )

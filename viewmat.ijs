@@ -315,6 +315,7 @@ wd 'psel ',(<0 1) pick fms
 (getbmp'') writebmp fl
 )
 setsize=: 3 : 0
+if. IFQT do. return. end.
 fms=. hforms''
 if. 0=#fms
 do. mbinfo 'viewmat';'No viewmat forms.' return.
@@ -377,6 +378,7 @@ hcascade''
 hadd''
 if. IFQT do.
   wd 'pshow'
+  glpaintx''
 end.
 )
 vmwin=: 3 : 0

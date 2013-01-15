@@ -25,8 +25,8 @@ end.
 )
 destroy=: 3 : 0
 if. GUI do.
-  if. 'Android'-:UNAME do.
-  elseif. IFQT do.
+  if. IFQT do.
+  elseif. 'Android'-:UNAME do.
   elseif. do.
     if. -.IFGTK do.
       gtk_main_quit''
@@ -199,9 +199,9 @@ EMPTY
 )
 viewmat_close=: 3 : 0
 hremove''
-if. 'Android'-:UNAME do.
-elseif. IFQT do.
+if. IFQT do.
   wd 'pclose'
+elseif. 'Android'-:UNAME do.
 elseif. do.
   gtk_widget_destroy window
   if. -.IFGTK do. gtk_main_quit '' end.
@@ -350,7 +350,7 @@ else.
   empty vmrun__a ''
   (no_gui_bmp__a'') writebmp jpath '~temp/viewmat.bmp'
   if. (UNAME-:'Android') *. 0=isatty 0 do.
-    2!:1 'android.intent.action.VIEW';('file://',jpath '~temp/viewmat.bmp');'image/bitmap'
+    2!:1`android_exec_host@.IFQT 'android.intent.action.VIEW';('file://',jpath '~temp/viewmat.bmp');'image/bitmap'
   end.
   destroy__a ''
 end.
@@ -382,11 +382,11 @@ if. IFQT do.
 end.
 )
 vmwin=: 3 : 0
-if. 'Android'-:UNAME do.
-elseif. IFQT do.
+if. IFQT do.
   wd 'pc viewmat;pn *',TITLE
   wd 'cc g isigraph'
   wd 'pmovex _1 _1 ', ":mwh0
+elseif. 'Android'-:UNAME do.
 elseif. do.
   newwindow TITLE
   gtk_window_set_position window,GTK_WIN_POS_CENTER_ALWAYS

@@ -202,6 +202,7 @@ hremove''
 if. IFQT do.
   wd 'pclose'
 elseif. 'Android'-:UNAME do.
+  wd 'pclose'
 elseif. do.
   gtk_widget_destroy window
   if. -.IFGTK do. gtk_main_quit '' end.
@@ -340,7 +341,7 @@ viewmat=: 3 : 0
 a=. '' conew 'jviewmat'
 xx__a=: x [ yy__a=: y
 if. GUI do.
-  if. 'Android'-:UNAME do.
+  if. ('Android'-:UNAME)>IFQT do.
     0 StartActivity_ja_ (>a); 'onDestroy'
   else.
     empty vmrun__a ''
@@ -350,7 +351,7 @@ else.
   empty vmrun__a ''
   (no_gui_bmp__a'') writebmp jpath '~temp/viewmat.bmp'
   if. (UNAME-:'Android') *. 0=isatty 0 do.
-    2!:1`android_exec_host@.IFQT 'android.intent.action.VIEW';('file://',jpath '~temp/viewmat.bmp');'image/bitmap'
+    android_exec_host 'android.intent.action.VIEW';('file://',jpath '~temp/viewmat.bmp');'image/bitmap'
   end.
   destroy__a ''
 end.

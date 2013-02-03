@@ -1,8 +1,8 @@
-require 'graphics/bmp'
+require 'graphics/bmp graphics/gl2'
 
 coclass 'jviewmat'
 
-coinsert 'jni jaresu'
+coinsert 'jgl2 jni jaresu'
 GUI=: -. IFJHS +. IFIOS
 
 jniImport ::0: (0 : 0)
@@ -21,11 +21,6 @@ if. GUI > IFQT do.
 end.
 )
 destroy=: 3 : 0
-if. GUI do.
-  if. IFQT do.
-  elseif. 'Android'-:UNAME do.
-  end.
-end.
 codestroy''
 )
 finite=: x: ^: _1
@@ -129,7 +124,9 @@ mat ; ang
 hadd=: 3 : 0
 setvmh VMH,~coname''
 )
-hcascade=: ]
+hcascade=: 3 : 0
+''
+)
 hforms=: 3 : 0
 fms=. <;._2 &> <;._2 wdqpx''
 fms=. fms #~ (1{"1 fms) e. VMH
@@ -182,11 +179,7 @@ EMPTY
 )
 viewmat_close=: 3 : 0
 hremove''
-if. IFQT do.
-  wd 'pclose'
-elseif. 'Android'-:UNAME do.
-  wd 'pclose'
-end.
+wd 'pclose'
 destroy''
 1
 )
@@ -325,7 +318,6 @@ if. GUI do.
     0 StartActivity_ja_ (>a); 'onDestroy'
   else.
     empty vmrun__a ''
-    if. -.IFQT do. gtk_main '' end.
   end.
 else.
   empty vmrun__a ''
@@ -367,15 +359,6 @@ if. IFQT do.
   wd 'pc viewmat;pn *',TITLE
   wd 'cc g isigraph'
   wd 'pmovex _1 _1 ', ":mwh0
-elseif. 'Android'-:UNAME do.
-elseif. do.
-  newwindow TITLE
-  gtk_window_set_position window,GTK_WIN_POS_CENTER_ALWAYS
-  consig3 window;'key-press-event';'viewmat_key_press'
-  consig3 window;'focus-in-event';'viewmat_focus_in'
-  canvas=: glcanvas y;coname''
-  gtk_container_add window,canvas
-  windowfinish''
 end.
 )
 isigraph_event=: 4 : 0

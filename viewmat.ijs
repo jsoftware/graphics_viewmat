@@ -1,8 +1,8 @@
-require 'graphics/bmp graphics/gl2'
+require 'graphics/bmp'
 
 coclass 'jviewmat'
 
-coinsert 'jgtk jgl2 jni jaresu'
+coinsert 'jni jaresu'
 GUI=: -. IFJHS +. IFIOS
 
 jniImport ::0: (0 : 0)
@@ -14,12 +14,9 @@ MINWH=: 200 200
 DEFWH=: 360 360
 
 create=: 3 : 0
-if. GUI > IFGTK+.IFQT do.
+if. GUI > IFQT do.
   if. ('Android'-:UNAME)>IFQT do.
     require 'gui/android'
-  else.
-    require 'gui/gtk'
-    gtkinit_jgtk_''
   end.
 end.
 )
@@ -27,11 +24,6 @@ destroy=: 3 : 0
 if. GUI do.
   if. IFQT do.
   elseif. 'Android'-:UNAME do.
-  elseif. do.
-    if. -.IFGTK do.
-      gtk_main_quit''
-    end.
-    cbfree''
   end.
 end.
 codestroy''
@@ -137,16 +129,7 @@ mat ; ang
 hadd=: 3 : 0
 setvmh VMH,~coname''
 )
-hcascade=: 3 : 0
-if. GUI *. IFGTK *. 0~:#VMH do.
-  loc=. {.VMH
-  siz=. 2 3 { getwinpos window
-  prv=. 2 {. getwinpos window__loc
-  txy=. prv + 32
-  txy=. txy * *./ Swh_jgtkide_ >: txy + siz
-  (txy,siz) setwinpos window
-end.
-)
+hcascade=: ]
 hforms=: 3 : 0
 fms=. <;._2 &> <;._2 wdqpx''
 fms=. fms #~ (1{"1 fms) e. VMH
@@ -203,9 +186,6 @@ if. IFQT do.
   wd 'pclose'
 elseif. 'Android'-:UNAME do.
   wd 'pclose'
-elseif. do.
-  gtk_widget_destroy window
-  if. -.IFGTK do. gtk_main_quit '' end.
 end.
 destroy''
 1
@@ -345,7 +325,7 @@ if. GUI do.
     0 StartActivity_ja_ (>a); 'onDestroy'
   else.
     empty vmrun__a ''
-    if. -.IFGTK+.IFQT do. gtk_main '' end.
+    if. -.IFQT do. gtk_main '' end.
   end.
 else.
   empty vmrun__a ''

@@ -10,8 +10,8 @@ android.content.Context
 android.view.View
 android.view.Window
 )
-MINWH=: 200 200
-DEFWH=: 360 360
+MINWH=: <.@-:^:(IFIOS+.'Android'-:UNAME) 200 200
+DEFWH=: <.@-:^:(IFIOS+.'Android'-:UNAME) 360 360
 
 create=: 3 : 0
 if. GUI > IFQT do.
@@ -351,14 +351,14 @@ hcascade''
 hadd''
 if. IFQT do.
   wd 'pshow'
-  glpaintx''
+  glpaint''
 end.
 )
 vmwin=: 3 : 0
 if. IFQT do.
   wd 'pc viewmat;pn *',TITLE
+  wd 'wh ', ":mwh0
   wd 'cc g isigraph'
-  wd 'pmovex _1 _1 ', ":mwh0
 end.
 )
 isigraph_event=: 4 : 0

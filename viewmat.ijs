@@ -351,7 +351,6 @@ hcascade''
 hadd''
 if. IFQT do.
   wd 'pshow'
-  glpaint''
 end.
 )
 vmwin=: 3 : 0

@@ -158,7 +158,7 @@ glsel gid
 mwh=. glqwh''
 if. #ANG do. mwh vf_show mat return. end.
 mat=. , mwh fitvm mat
-glpixels (0 0, mwh), mat
+glpixels (0 0, mwh), mat (27 b.) 16bffffff
 )
 viewmat_g_paint=: 3 : 0
 mat=. finite MAT
@@ -173,7 +173,7 @@ else.
 end.
 if. #ANG do. mwh vf_show mat return. end.
 mat=. , mwh fitvm mat
-glpixels (0 0, mwh), mat
+glpixels (0 0, mwh), alpha27 mat
 SHOW=: 1
 EMPTY
 )
@@ -232,7 +232,7 @@ glrgb 0 0 0
 glpen 1 0
 glbrush''
 
-glpixels (0 0, mwh), mat
+glpixels (0 0, mwh), alpha27 mat
 len=. <. <./ 'scls srws'=. mwh % cls,rws
 x=. (-:scls) + scls * i. cls
 y=. (-:srws) + srws * i. rws

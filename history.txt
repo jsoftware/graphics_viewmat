@@ -26,5 +26,5 @@ graphics/viewmat - change history
 == 1.0.20/25 ==
  * qt
 
-== 1.0.26/29 ==
+== 1.0.26/.. ==
  * j801

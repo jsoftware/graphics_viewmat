@@ -349,15 +349,13 @@ mwh0=: mwh
 vmwin^:GUI mwh
 hcascade''
 hadd''
-if. IFQT do.
-  wd 'pshow'
-end.
 )
 vmwin=: 3 : 0
 if. IFQT do.
   wd 'pc viewmat;pn *',TITLE
   wd 'wh ', ":mwh0
   wd 'cc g isigraph'
+  wd 'pshow'
 end.
 )
 isigraph_event=: 4 : 0

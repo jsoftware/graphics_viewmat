@@ -296,10 +296,10 @@ do. mbinfo 'viewmat';'No viewmat forms.' return.
 end.
 loc=. (<0 2) { fms
 wd 'psel ',(<0 1) pick fms
-form=. wdqformx''
+form=. wdqform''
 xywh=. wdqchildxywh GID
 dif=. 0 0, y - _2 {. xywh
-wd 'pmovex ',":form + dif
+wd 'pmove ',":form + dif
 )
 viewbmp=: 3 : 0
 '' viewbmp y

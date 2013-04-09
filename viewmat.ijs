@@ -15,7 +15,7 @@ DEFWH=: <.@-:^:(IFIOS+.'Android'-:UNAME) 360 360
 
 create=: 3 : 0
 if. GUI > IFQT do.
-  if. ('Android'-:UNAME)>IFQT do.
+  if. IFJCDROID do.
     require 'gui/android'
   end.
 end.
@@ -314,7 +314,7 @@ viewmat=: 3 : 0
 a=. '' conew 'jviewmat'
 xx__a=: x [ yy__a=: y
 if. GUI do.
-  if. ('Android'-:UNAME)>IFQT do.
+  if. IFJCDROID do.
     0 StartActivity_ja_ (>a); 'onDestroy'
   else.
     empty vmrun__a ''

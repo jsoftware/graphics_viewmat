@@ -353,7 +353,7 @@ hadd''
 vmwin=: 3 : 0
 if. IFQT do.
   wd 'pc viewmat;pn *',TITLE
-  wd 'wh ', ":mwh0
+  wd 'minwh ', ":mwh0
   wd 'cc g isigraph'
   wd 'pshow'
 end.

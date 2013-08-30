@@ -354,7 +354,7 @@ vmwin=: 3 : 0
 if. IFQT do.
   wd 'pc viewmat;pn *',TITLE
   wd 'minwh ', ":mwh0
-  wd 'cc g isigraph'
+  wd 'cc g isigraph flush'
   wd 'pshow'
 end.
 )

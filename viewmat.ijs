@@ -3,7 +3,7 @@ require 'graphics/bmp graphics/gl2'
 coclass 'jviewmat'
 
 coinsert 'jgl2 jni jaresu'
-GUI=: -. IFJHS +. IFIOS
+GUI=: IFQT +. IFJCDROID +. -. IFJHS +. IFIOS +. ('Android'-:UNAME)
 
 jniImport ::0: (0 : 0)
 android.content.Context
@@ -13,13 +13,7 @@ android.view.Window
 MINWH=: <.@-:^:(IFIOS+.'Android'-:UNAME) 200 200
 DEFWH=: <.@-:^:(IFIOS+.'Android'-:UNAME) 360 360
 
-create=: 3 : 0
-if. GUI > IFQT do.
-  if. IFJCDROID do.
-    require 'gui/android'
-  end.
-end.
-)
+create=: 0:
 destroy=: 3 : 0
 codestroy''
 )

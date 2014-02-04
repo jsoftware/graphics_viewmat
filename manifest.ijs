@@ -6,7 +6,7 @@ DESCRIPTION=: 0 : 0
 Viewmat displays tables of data graphically.
 )
 
-VERSION=: '1.0.37'
+VERSION=: '1.0.38'
 
 RELEASE=: 'j801'
 

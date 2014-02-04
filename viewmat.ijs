@@ -316,7 +316,7 @@ if. GUI do.
 else.
   empty vmrun__a ''
   (no_gui_bmp__a'') writebmp jpath '~temp/viewmat.bmp'
-  if. (UNAME-:'Android') *. 0=isatty 0 do.
+  if. UNAME-:'Android' do.
     android_exec_host 'android.intent.action.VIEW';('file://',jpath '~temp/viewmat.bmp');'image/bitmap'
   end.
   destroy__a ''

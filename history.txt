@@ -31,3 +31,6 @@ graphics/viewmat - change history
 
 == 1.0.39 ==
  * fixed bug in closeall
+
+== 1.0.40 ==
+ * add Esc close

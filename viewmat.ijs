@@ -181,7 +181,7 @@ viewmat_focus_in=: hadd
 viewmat_key_press=: 3 : 0
 if. isesckey y do. viewmat_close'' else. 0 end.
 )
-window_delete=: viewmat_close
+window_delete=: viewmat_cancel=: viewmat_close
 fitvf=: 4 : 0
 
 hw=. |. x

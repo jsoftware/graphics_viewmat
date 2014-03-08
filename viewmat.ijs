@@ -173,7 +173,7 @@ EMPTY
 )
 viewmat_close=: 3 : 0
 hremove''
-wd 'pclose'
+wd 'psel ',syshwndp,';pclose'
 destroy''
 1
 )

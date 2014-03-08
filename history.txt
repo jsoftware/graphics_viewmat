@@ -28,3 +28,6 @@ graphics/viewmat - change history
 
 == 1.0.26/.. ==
  * j801
+
+== 1.0.39 ==
+ * fixed bug in closeall

@@ -154,6 +154,7 @@ if. #ANG do. mwh vf_show mat return. end.
 mat=. , mwh fitvm mat
 glpixels (0 0, mwh), mat (27 b.) 16bffffff
 )
+viewmat_jctrl_fkey=: 3 : 'labnext_jlab_ :: ] '''''
 viewmat_g_paint=: 3 : 0
 mat=. finite MAT
 'rws cls'=. $mat

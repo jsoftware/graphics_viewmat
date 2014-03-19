@@ -3,7 +3,7 @@ require 'graphics/bmp graphics/gl2'
 coclass 'jviewmat'
 
 coinsert 'jgl2 jni jaresu'
-GUI=: IFQT +. IFJCDROID +. -. IFJHS +. IFIOS +. ('Android'-:UNAME)
+GUI=: (IFQT +. IFJCDROID) > IFJHS +. IFIOS
 
 jniImport ::0: (0 : 0)
 android.content.Context
@@ -155,6 +155,11 @@ mat=. , mwh fitvm mat
 glpixels (0 0, mwh), mat (27 b.) 16bffffff
 )
 viewmat_jctrl_fkey=: 3 : 'labnext_jlab_ :: ] '''''
+viewmat_sctrl_fkey=: 3 : 0
+fl=. jpath '~temp/viewmat.bmp'
+wd 'psel viewmat'
+(getbmp'') writebmp fl
+)
 viewmat_g_paint=: 3 : 0
 mat=. finite MAT
 'rws cls'=. $mat

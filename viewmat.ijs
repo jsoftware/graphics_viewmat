@@ -321,9 +321,9 @@ if. GUI do.
   end.
 else.
   empty vmrun__a ''
-  (no_gui_bmp__a'') writebmp jpath '~temp/',TITLE,'.bmp'
+  (no_gui_bmp__a'') writebmp jpath '~temp/',TITLE__a,'.bmp'
   if. UNAME-:'Android' do.
-    android_exec_host 'android.intent.action.VIEW';('file://',jpath '~temp/',TITLE,'.bmp');'image/bitmap'
+    android_exec_host 'android.intent.action.VIEW';('file://',jpath '~temp/',TITLE__a,'.bmp');'image/bitmap'
   end.
   destroy__a ''
 end.

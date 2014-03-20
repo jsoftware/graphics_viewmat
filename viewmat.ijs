@@ -156,7 +156,7 @@ glpixels (0 0, mwh), mat (27 b.) 16bffffff
 )
 viewmat_jctrl_fkey=: 3 : 'labnext_jlab_ :: ] '''''
 viewmat_sctrl_fkey=: 3 : 0
-fl=. jpath '~temp/viewmat.bmp'
+fl=. jpath '~temp/',TITLE,'.bmp'
 wd 'psel viewmat'
 (getbmp'') writebmp fl
 )
@@ -321,9 +321,9 @@ if. GUI do.
   end.
 else.
   empty vmrun__a ''
-  (no_gui_bmp__a'') writebmp jpath '~temp/viewmat.bmp'
+  (no_gui_bmp__a'') writebmp jpath '~temp/',TITLE,'.bmp'
   if. UNAME-:'Android' do.
-    android_exec_host 'android.intent.action.VIEW';('file://',jpath '~temp/viewmat.bmp');'image/bitmap'
+    android_exec_host 'android.intent.action.VIEW';('file://',jpath '~temp/',TITLE,'.bmp');'image/bitmap'
   end.
   destroy__a ''
 end.

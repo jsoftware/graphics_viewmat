@@ -20,3 +20,4 @@ FILES=: 0 : 0
 viewmat.ijs
 history.txt
 )
+PLATFORMS=: 'linux win darwin android'

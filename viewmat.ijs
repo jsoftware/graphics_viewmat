@@ -64,6 +64,10 @@ if. ifRGB do.
 else.
   'mat ang'=. x getvm1 dat
 end.
+if. 2<#$mat do.
+  sminfo 'Data rank not supported in viewmat: ',":#$mat
+  mat=. ''
+end.
 dat ; mat ; ang ; tit
 )
 getvm1=: 4 : 0
@@ -87,8 +91,9 @@ case. 0 do.
   mat=. 1 1$mat
 case. 1 do.
   mat=. citemize mat
-case. 3 do.
-  'mat ang'=. mat
+case. 2 do.
+case. do.
+  mat;'' return.
 end.
 if. */ (,mat) e. 0 1 do.
   if. #hue do.
@@ -97,7 +102,6 @@ if. */ (,mat) e. 0 1 do.
     h=. 0 ,: 255 255 255
   end.
   mat=. mat { h
-
 else.
   if. #hue do.
     h=. hue
@@ -146,6 +150,7 @@ vmcc=: 4 : 0
 ifRGB=: x -: 'rgb'
 'mat gid'=. y
 'DAT MAT ANG TITLE'=: x getvm mat
+if. 0 e. $MAT do. return. end.
 mat=. finite MAT
 'rws cls'=. $mat
 glsel gid
@@ -339,6 +344,7 @@ if. 0 > nc <'VMH' do. setvmh '' end.
 SHOW=: 0
 ifRGB=: x -: 'rgb'
 'DAT MAT ANG TITLE'=: x getvm y
+if. 0 e. $MAT do. return. end.
 mat=. finite MAT
 'rws cls'=. $mat
 mwh=. cls,rws

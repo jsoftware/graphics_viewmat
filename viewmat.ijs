@@ -41,8 +41,7 @@ ext=. sc * max - min
 (min-ext) >. y <. max+ext
 )
 getbmp=: 3 : 0
-gid=. y, (0=#y) # GID
-glsel gid
+glsel'g'
 box=. 0 0,glqwh''
 res=. glqpixels box
 (3 2 { box) $ res
@@ -127,7 +126,7 @@ hcascade=: 3 : 0
 )
 hforms=: 3 : 0
 fms=. <;._2 &> <;._2 wdqpx''
-fms=. fms #~ (1{"1 fms) e. VMH
+fms=. fms #~ (2{"1 fms) e. VMH
 fms \: 0 ". &> 4{"1 fms
 )
 hremove=: 3 : 0
@@ -268,15 +267,15 @@ end.
 getsize=: 3 : 0
 fms=. hforms''
 if. 0=#fms
-do. mbinfo 'viewmat';'No viewmat forms.' return.
+do. sminfo 'viewmat';'No viewmat forms.' return.
 end.
 wd 'psel ',(<0 1) pick fms
-_2 {. wdqchildxywh GID
+_2 {. wdqchildxywh 'g'
 )
 readmat=: 3 : 0
 fms=. hforms''
 if. 0=#fms do.
-  mbinfo 'viewmat';'No viewmat forms.' return.
+  sminfo 'viewmat';'No viewmat forms.' return.
 end.
 wd 'psel ',(<0 1) pick fms
 getbmp''
@@ -288,21 +287,20 @@ if. 0 = #fl do.
 end.
 fms=. hforms''
 if. 0=#fms
-do. mbinfo 'viewmat';'No viewmat forms.' return.
+do. sminfo 'viewmat';'No viewmat forms.' return.
 end.
 wd 'psel ',(<0 1) pick fms
 (getbmp'') writebmp fl
 )
 setsize=: 3 : 0
-if. IFQT do. return. end.
 fms=. hforms''
 if. 0=#fms
-do. mbinfo 'viewmat';'No viewmat forms.' return.
+do. sminfo 'viewmat';'No viewmat forms.' return.
 end.
 loc=. (<0 2) { fms
 wd 'psel ',(<0 1) pick fms
 form=. wdqform''
-xywh=. wdqchildxywh GID
+xywh=. wdqchildxywh 'g'
 dif=. 0 0, y - _2 {. xywh
 wd 'pmove ',":form + dif
 )

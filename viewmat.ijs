@@ -10,8 +10,18 @@ android.content.Context
 android.view.View
 android.view.Window
 )
-MINWH=: <.@-:^:(IFIOS+.'Android'-:UNAME) 200 200
-DEFWH=: <.@-:^:(IFIOS+.'Android'-:UNAME) 360 360
+MINWH=: 200 200
+DEFWH=: 360 360
+
+3 : 0''
+if. 'Android'-:UNAME do.
+  if. 0=4!:0<'DM_density_ja_' do.
+    MINWH=: MINWH * DM_density_ja_
+    DEFWH=: ,~ <./ <. 5 3{getdisplaymetrics_ja_ 0
+  end.
+end.
+EMPTY
+)
 
 create=: 0:
 destroy=: 3 : 0
@@ -360,7 +370,18 @@ if. IFQT do.
   wd 'minwh ', ":mwh0
   wd 'cc g isigraph flush'
   wd 'pshow'
+  adjwh^:('Android'-:UNAME) mwh0
 end.
+)
+adjwh=: 3 : 0
+wh0=. y
+'w h'=. 2}. ". wd 'qform'
+if. (%/wh0) < w%h do.
+  h1=. h [ w1=. h * (%/wh0)
+else.
+  w1=. w [ h1=. w % (%/wh0)
+end.
+wd 'set g wh ',":w1,h1
 )
 isigraph_event=: 4 : 0
 evt=. >@{.y

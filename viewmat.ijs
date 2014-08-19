@@ -243,7 +243,7 @@ mat=. y
 mat=. , mwh fitvf mat
 
 glrgb 0 0 0
-glpen 1 0
+glpen 1 1
 glbrush''
 
 glpixels (0 0, mwh), alpha27 mat

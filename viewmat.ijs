@@ -1,4 +1,4 @@
-require 'graphics/bmp graphics/gl2'
+require 'graphics/bmp graphics/gl2 graphics/png'
 
 coclass 'jviewmat'
 
@@ -50,7 +50,7 @@ min=. <./a
 ext=. sc * max - min
 (min-ext) >. y <. max+ext
 )
-getbmp=: 3 : 0
+getbitmap=: 3 : 0
 glsel'g'
 box=. 0 0,glqwh''
 res=. glqpixels box
@@ -146,7 +146,7 @@ setvmh=: 3 : 0
 VMH_jviewmat_=: (~.y) intersect conl 1
 )
 rgb1=: 256&(#. flipwritergb_jbmp_)
-no_gui_bmp=: 3 : 0
+no_gui_bitmap=: 3 : 0
 mat=. finite MAT
 'rws cls'=. $mat
 mwh=. cls,rws
@@ -170,9 +170,9 @@ glpixels (0 0, mwh), mat (27 b.) 16bffffff
 )
 viewmat_jctrl_fkey=: 3 : 'labnext_jlab_ :: ] '''''
 viewmat_sctrl_fkey=: 3 : 0
-fl=. jpath '~temp/',TITLE,'.bmp'
+fl=. jpath '~temp/',TITLE,'.png'
 wd 'psel viewmat'
-(getbmp'') writebmp fl
+(getbitmap'') writepng fl
 )
 viewmat_g_paint=: 3 : 0
 mat=. finite MAT
@@ -288,19 +288,19 @@ if. 0=#fms do.
   sminfo 'viewmat';'No viewmat forms.' return.
 end.
 wd 'psel ',(<0 1) pick fms
-getbmp''
+getbitmap''
 )
 savemat=: 3 : 0
 fl=. y
 if. 0 = #fl do.
-  fl=. jpath '~temp/viewmat.bmp'
+  fl=. jpath '~temp/viewmat.png'
 end.
 fms=. hforms''
 if. 0=#fms
 do. sminfo 'viewmat';'No viewmat forms.' return.
 end.
 wd 'psel ',(<0 1) pick fms
-(getbmp'') writebmp fl
+(getbitmap'') writepng fl
 )
 setsize=: 3 : 0
 fms=. hforms''
@@ -334,9 +334,9 @@ if. GUI do.
   end.
 else.
   empty vmrun__a ''
-  (no_gui_bmp__a'') writebmp jpath '~temp/',TITLE__a,'.bmp'
+  (no_gui_bitmap__a'') writepng jpath '~temp/',TITLE__a,'.png'
   if. UNAME-:'Android' do.
-    android_exec_host 'android.intent.action.VIEW';('file://',jpath '~temp/',TITLE__a,'.bmp');'image/bitmap';0
+    android_exec_host 'android.intent.action.VIEW';('file://',jpath '~temp/',TITLE__a,'.png');'image/bitmap';0
   end.
   destroy__a ''
 end.

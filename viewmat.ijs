@@ -335,10 +335,21 @@ if. GUI do.
 else.
   empty vmrun__a ''
   (no_gui_bitmap__a'') writepng jpath '~temp/',TITLE__a,'.png'
-  if. UNAME-:'Android' do.
-    android_exec_host 'android.intent.action.VIEW';('file://',jpath '~temp/',TITLE__a,'.png');'image/bitmap';0
-  end.
+  TITLE=. TITLE__a
   destroy__a ''
+  if. IFJHS do.
+    if. 'viewmat'-:TITLE do.
+      if. 0~:4!:0<'vmcnt_jhs_' do. vmcnt_jhs_=: 0 end.
+      r=. '~temp/viewmat_',(":vmcnt_jhs_=: >:vmcnt_jhs_),'.png'
+      (jpath r) frename jpath '~temp/viewmat.png'
+    else.
+      r=. '~temp/',TITLE,'.png'
+    end.
+    t=. '<img src="',r,'"></img>'
+    jhtml t
+  elseif. UNAME-:'Android' do.
+    android_exec_host 'android.intent.action.VIEW';('file://',jpath '~temp/',TITLE,'.png');'image/png';0
+  end.
 end.
 )
 viewmatcc=: 3 : 0

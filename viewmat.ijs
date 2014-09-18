@@ -321,6 +321,13 @@ dat=. readbmp y
 if. 2 = 3!:0 dat do. return. end.
 'rgb' viewmat dat;x
 )
+viewpng=: 3 : 0
+'' viewpng y
+:
+dat=. readpng y
+if. 2 = 3!:0 dat do. return. end.
+'rgb' viewmat dat;x
+)
 viewmat=: 3 : 0
 '' viewmat y
 :
@@ -338,14 +345,9 @@ else.
   TITLE=. TITLE__a
   destroy__a ''
   if. IFJHS do.
-    if. 'viewmat'-:TITLE do.
-      if. 0~:4!:0<'vmcnt_jhs_' do. vmcnt_jhs_=: 0 end.
-      r=. '~temp/viewmat_',(":vmcnt_jhs_=: >:vmcnt_jhs_),'.png'
-      (jpath r) frename jpath '~temp/viewmat.png'
-    else.
-      r=. '~temp/',TITLE,'.png'
-    end.
-    t=. '<img src="',r,'"></img>'
+    r=. '~temp/',TITLE,'_',(}.jhsuqs''),'.png'
+    (jpath r) frename jpath '~temp/',TITLE,'.png'
+    t=. '<img src="',r,(jhsuqs''),'"></img>'
     jhtml t
   elseif. UNAME-:'Android' do.
     android_exec_host 'android.intent.action.VIEW';('file://',jpath '~temp/',TITLE,'.png');'image/png';0
@@ -434,5 +436,6 @@ Activity=: idnx=: 0
 )
 viewmat_z_=: viewmat_jviewmat_
 viewbmp_z_=: viewbmp_jviewmat_
+viewpng_z_=: viewpng_jviewmat_
 viewrgb_z_=: 'rgb' & viewmat_jviewmat_
 rgb1_z_=: rgb1_jviewmat_

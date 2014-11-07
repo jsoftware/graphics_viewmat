@@ -32,6 +32,7 @@ intersect=: e. # [
 citemize=: ,: ^: (2: > #@$)
 rndint=: <.@:+&0.5
 tomatrix=: (_2 {. 1 1 , $) $ ,
+alpha23=: (23 b.) & (0 (26 b.) 16bffffff)
 fitvm=: 4 : 0
 'w h'=. x
 mat=. y
@@ -187,7 +188,7 @@ else.
 end.
 if. #ANG do. mwh vf_show mat return. end.
 mat=. , mwh fitvm mat
-glpixels (0 0, mwh), alpha27 mat
+glpixels (0 0, mwh), alpha23 mat
 SHOW=: 1
 EMPTY
 )
@@ -246,7 +247,7 @@ glrgb 0 0 0
 glpen 1 1
 glbrush''
 
-glpixels (0 0, mwh), alpha27 mat
+glpixels (0 0, mwh), alpha23 mat
 len=. <. <./ 'scls srws'=. mwh % cls,rws
 x=. (-:scls) + scls * i. cls
 y=. (-:srws) + srws * i. rws
@@ -341,7 +342,7 @@ if. GUI do.
   end.
 else.
   empty vmrun__a ''
-  (no_gui_bitmap__a'') writepng jpath '~temp/',TITLE__a,'.png'
+  (alpha23 no_gui_bitmap__a'') writepng jpath '~temp/',TITLE__a,'.png'
   TITLE=. TITLE__a
   destroy__a ''
   if. IFJHS do.

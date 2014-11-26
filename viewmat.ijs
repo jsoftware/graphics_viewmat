@@ -19,6 +19,9 @@ if. 'Android'-:UNAME do.
     MINWH=: MINWH * DM_density_ja_
     DEFWH=: ,~ <./ <. 5 3{getdisplaymetrics_ja_ 0
   end.
+elseif. IFIOS do.
+  MINWH=: >IFIPAD{310 150;758 250
+  DEFWH=: (>:IFRETINA)* MINWH
 end.
 EMPTY
 )
@@ -352,6 +355,12 @@ else.
     (jpath r) frename jpath '~temp/',TITLE,'.png'
     t=. '<img src="',r,(jhsuqs''),'"></img>'
     jhtml t
+  elseif. IFIOS do.
+    uqs=. '?',((":6!:0'')rplc' ';'_';'.';'_')
+    r=. '~temp/',TITLE,'_',(}.uqs),'.png'
+    (iospath@jpath r) frename iospath@jpath '~temp/',TITLE,'.png'
+    t=. '<img src="',(iospath@jpath r),uqs,'"></img>'
+    jh t
   elseif. UNAME-:'Android' do.
     android_exec_host 'android.intent.action.VIEW';('file://',jpath '~temp/',TITLE,'.png');'image/png';0
   end.

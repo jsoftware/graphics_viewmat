@@ -35,9 +35,6 @@ intersect=: e. # [
 citemize=: ,: ^: (2: > #@$)
 rndint=: <.@:+&0.5
 tomatrix=: (_2 {. 1 1 , $) $ ,
-setalpha_z_=: 16bff&$: : (4 : 0)
-((_32&(34 b.))^:IF64 _8 (32 b.) x)&(23 b.) 16bffffff (17 b.) y
-)
 fitvm=: 4 : 0
 'w h'=. x
 mat=. y

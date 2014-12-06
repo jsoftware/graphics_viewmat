@@ -13,6 +13,8 @@ android.view.Window
 MINWH=: 200 200
 DEFWH=: 360 360
 
+VISIBLE=: 1
+
 3 : 0''
 if. 'Android'-:UNAME do.
   if. 0=4!:0<'DM_density_ja_' do.
@@ -347,19 +349,23 @@ else.
   (setalpha no_gui_bitmap__a'') writepng jpath '~temp/',TITLE__a,'.png'
   TITLE=. TITLE__a
   destroy__a ''
-  if. IFJHS do.
-    r=. '~temp/',TITLE,'_',(}.jhsuqs''),'.png'
-    (jpath r) frename jpath '~temp/',TITLE,'.png'
-    t=. '<img src="',r,(jhsuqs''),'"></img>'
-    jhtml t
-  elseif. IFIOS do.
-    uqs=. '?',((":6!:0'')rplc' ';'_';'.';'_')
-    r=. '~temp/',TITLE,'_',(}.uqs),'.png'
-    (iospath@jpath r) frename iospath@jpath '~temp/',TITLE,'.png'
-    t=. '<img src="',(iospath@jpath r),uqs,'"></img>'
-    jh t
-  elseif. UNAME-:'Android' do.
-    android_exec_host 'android.intent.action.VIEW';('file://',jpath '~temp/',TITLE,'.png');'image/png';0
+  if. VISIBLE do.
+    if. IFJHS do.
+      r=. '~temp/',TITLE,'_',(}.jhsuqs''),'.png'
+      (jpath r) frename jpath '~temp/',TITLE,'.png'
+      t=. '<img src="',r,(jhsuqs''),'"></img>'
+      jhtml t
+    elseif. IFIOS do.
+      uqs=. '?',((":6!:0'')rplc' ';'_';'.';'_')
+      r=. '~temp/',TITLE,'_',(}.uqs),'.png'
+      (iospath@jpath r) frename iospath@jpath '~temp/',TITLE,'.png'
+      t=. '<img src="',(iospath@jpath r),uqs,'"></img>'
+      jh t
+    elseif. UNAME-:'Android' do.
+      android_exec_host 'android.intent.action.VIEW';('file://',jpath '~temp/',TITLE,'.png');'image/png';0
+    elseif. do.
+      browse_j_ jpath '~temp/',TITLE,'.png'
+    end.
   end.
 end.
 )

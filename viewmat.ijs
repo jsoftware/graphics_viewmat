@@ -19,11 +19,11 @@ VISIBLE=: 1
 if. 'Android'-:UNAME do.
   if. 0=4!:0<'DM_density_ja_' do.
     MINWH=: MINWH * DM_density_ja_
-    if. IFQT do.
-      DEFWH=: ,~ <./ <. 2 3{ ". wd'qscreen'
-    else.
-      DEFWH=: ,~ <./ <. 5 3{getdisplaymetrics_ja_ 0
-    end.
+  end.
+  if. IFQT do.
+    DEFWH=: ,~ <./ <. 2 3{ ". wd'qscreen'
+  elseif. 3=4!:0<'getdisplaymetrics_ja_' do.
+    DEFWH=: ,~ <./ <. 5 3{getdisplaymetrics_ja_ 0
   end.
 elseif. IFIOS do.
   MINWH=: >IFIPAD{310 150;758 250

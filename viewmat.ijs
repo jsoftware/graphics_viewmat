@@ -17,9 +17,8 @@ VISIBLE=: 1
 
 3 : 0''
 if. 'Android'-:UNAME do.
-  if. 0=4!:0<'DM_density_ja_' do.
-    MINWH=: MINWH * DM_density_ja_
-  end.
+  android_getdisplaymetrics 0
+  MINWH=: MINWH * DM_density_ja_
   if. IFQT do.
     DEFWH=: ,~ <./ <. 2 3{ ". wd'qscreen'
   elseif. 3=4!:0<'getdisplaymetrics_ja_' do.

@@ -3,23 +3,17 @@ require 'graphics/bmp graphics/gl2 graphics/png'
 coclass 'jviewmat'
 
 coinsert 'jgl2 jni jaresu'
-GUI=: (IFQT +. IFJCDROID) > IFJHS +. IFIOS
-
-jniImport ::0: (0 : 0)
-android.content.Context
-android.view.View
-android.view.Window
-)
+GUI=: (IFQT +. IFJA) > IFJHS +. IFIOS
 MINWH=: 200 200
 DEFWH=: 360 360
 
 VISIBLE=: 1
 
 3 : 0''
-if. 'Android'-:UNAME do.
+if. ('Android'-:UNAME) > IFJA do.
   android_getdisplaymetrics 0
   MINWH=: <. MINWH * DM_density_ja_
-  if. IFQT do.
+  if. IFQT+.IFJA do.
     DEFWH=: ,~ <./ <. 2 3{ ". wd'qscreen'
   elseif. 3=4!:0<'getdisplaymetrics_ja_' do.
     DEFWH=: ,~ <./ <. 5 3{getdisplaymetrics_ja_ 0
@@ -32,6 +26,9 @@ EMPTY
 )
 
 create=: 0:
+onCreate=: 3 : 0
+vmwin mwh0
+)
 destroy=: 3 : 0
 codestroy''
 )
@@ -181,6 +178,14 @@ viewmat_sctrl_fkey=: 3 : 0
 fl=. jpath '~temp/',TITLE,'.png'
 wd 'psel viewmat'
 (getbitmap'') writepng fl
+)
+viewmat_g_resize=: 3 : 0
+if. needresize do.
+  adjwh mwh0
+  hcascade''
+  hadd''
+end.
+needresize=: 0
 )
 viewmat_g_paint=: 3 : 0
 mat=. finite MAT
@@ -342,11 +347,7 @@ viewmat=: 3 : 0
 a=. '' conew 'jviewmat'
 xx__a=: x [ yy__a=: y
 if. GUI do.
-  if. IFJCDROID do.
-    0 StartActivity_ja_ (>a); 'onDestroy'
-  else.
-    empty vmrun__a ''
-  end.
+  empty vmrun__a ''
 else.
   empty vmrun__a ''
   (setalpha no_gui_bitmap__a'') writepng jpath '~temp/',TITLE__a,'.png'
@@ -391,9 +392,14 @@ if. -. ifRGB do.
   mwh=. MINWH >. <. mwh * <./ DEFWH % cls,rws
 end.
 mwh0=: mwh
-vmwin^:GUI mwh
-hcascade''
-hadd''
+if. IFJA do.
+  needresize=: 1
+  wd 'activity ',>coname''
+else.
+  vmwin^:GUI mwh
+  hcascade''
+  hadd''
+end.
 )
 vmwin=: 3 : 0
 if. IFQT do.
@@ -402,6 +408,10 @@ if. IFQT do.
   wd 'cc g isigraph flush'
   wd 'pshow'
   adjwh^:('Android'-:UNAME) mwh0
+elseif. IFJA do.
+  wd 'pc viewmat;pn *',TITLE
+  wd 'cc g isigraph flush'
+  wd 'pshow'
 end.
 )
 adjwh=: 3 : 0
@@ -422,34 +432,6 @@ sysdefault=. 'viewmat_default'
 wdd=. ;: 'syshandler sysevent sysdefault'
 wdqdata=. (wdd ,. ".&.>wdd)
 evthandler wdqdata
-0
-)
-Activity=: 0
-
-onCreate=: 3 : 0
-jniCheck Activity=: NewGlobalRef <2{y
-jniCheck Activity ('requestWindowFeature (I)Z' jniMethod)~ FEATURE_NO_TITLE
-jniCheck win=. Activity ('getWindow ()LWindow;' jniMethod)~ ''
-jniCheck win ('setFlags (II)V' jniMethod)~ FLAG_FULLSCREEN;FLAG_FULLSCREEN
-jniCheck DeleteLocalRef <win
-option=. 0
-vmrun''
-wh=. mwh0
-idnx=: (0,Activity) glcanvas_jgl2_ wh ; coname''
-l=. glgetloc_jgl2_ idnx
-thisview=. view__l
-jniCheck Activity ('setContentView (LView;)V' jniMethod)~ thisview
-jniCheck thisview ('requestFocus ()Z' jniMethod)~ ''
-jniCheck DeleteLocalRef <thisview
-
-0
-)
-
-onDestroy=: 3 : 0
-if. Activity do.
-  jniCheck DeleteGlobalRef <Activity
-end.
-Activity=: idnx=: 0
 0
 )
 viewmat_z_=: viewmat_jviewmat_

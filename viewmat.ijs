@@ -21,6 +21,8 @@ if. ('Android'-:UNAME) > IFJA do.
 elseif. IFIOS do.
   MINWH=: >IFIPAD{310 150;758 250
   DEFWH=: (>:IFRETINA)* MINWH
+elseif. IFJA do.
+  DM_density_ja_=: {. ". wd 'dm'
 end.
 EMPTY
 )
@@ -410,7 +412,7 @@ if. IFQT do.
   adjwh^:('Android'-:UNAME) mwh0
 elseif. IFJA do.
   wd 'pc viewmat;pn *',TITLE
-  wd 'cc g isigraph flush'
+  wd 'wh _1 _1;cc g isigraph flush'
   wd 'pshow'
 end.
 )
@@ -422,7 +424,12 @@ if. (%/wh0) < w%h do.
 else.
   w1=. w [ h1=. w % (%/wh0)
 end.
-wd 'set g wh ',":w1,h1
+if. IFJA do.
+  wd 'set g wh ',": <. (w1,h1) % DM_density_ja_
+else.
+  wd 'set g wh ',":w1,h1
+end.
+EMPTY
 )
 isigraph_event=: 4 : 0
 evt=. >@{.y

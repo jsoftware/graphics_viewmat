@@ -28,7 +28,7 @@ EMPTY
 )
 
 create=: 0:
-onCreate=: 3 : 0
+onStart=: 3 : 0
 vmwin mwh0
 )
 destroy=: 3 : 0
@@ -396,7 +396,7 @@ end.
 mwh0=: mwh
 if. IFJA do.
   needresize=: 1
-  wd 'activity ',>coname''
+  wd 'activity ',(>coname'')
 else.
   vmwin^:GUI mwh
   hcascade''

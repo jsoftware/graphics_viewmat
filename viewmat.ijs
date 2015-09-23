@@ -370,7 +370,7 @@ else.
     elseif. UNAME-:'Android' do.
       android_exec_host 'android.intent.action.VIEW';('file://',jpath '~temp/',TITLE,'.png');'image/png';0
     elseif. do.
-      browse_j_ jpath '~temp/',TITLE,'.png'
+      viewimage_j_ jpath '~temp/',TITLE,'.png'
     end.
   end.
 end.

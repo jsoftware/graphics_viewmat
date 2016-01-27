@@ -3,7 +3,12 @@ require 'graphics/bmp graphics/gl2 graphics/png'
 coclass 'jviewmat'
 
 coinsert 'jgl2 jni jaresu'
-GUI=: (IFQT +. IFJA) > IFJHS +. IFIOS
+3 : 0''
+if. 0~: 4!:0<'VIEWMATQUI' do.
+  VIEWMATGUI=: (IFQT +. IFJA) > IFJHS +. IFIOS
+end.
+EMPTY
+)
 MINWH=: 200 200
 DEFWH=: 360 360
 
@@ -13,7 +18,7 @@ VISIBLE=: 1
 if. ('Android'-:UNAME) > IFJA do.
   android_getdisplaymetrics 0
   MINWH=: <. MINWH * DM_density_ja_
-  if. IFQT+.IFJA do.
+  if. IFQT+.IFJA+.VIEWMATGUI do.
     DEFWH=: ,~ <./ <. 2 3{ ". wd'qscreen'
   elseif. 3=4!:0<'getdisplaymetrics_ja_' do.
     DEFWH=: ,~ <./ <. 5 3{getdisplaymetrics_ja_ 0
@@ -348,7 +353,7 @@ viewmat=: 3 : 0
 :
 a=. '' conew 'jviewmat'
 xx__a=: x [ yy__a=: y
-if. GUI do.
+if. VIEWMATGUI do.
   empty vmrun__a ''
 else.
   empty vmrun__a ''
@@ -398,7 +403,7 @@ if. IFJA do.
   needresize=: 1
   wd 'activity ',(>coname'')
 else.
-  vmwin^:GUI mwh
+  vmwin^:VIEWMATGUI mwh
   hcascade''
   hadd''
 end.
@@ -409,12 +414,12 @@ if. IFQT do.
   wd 'minwh ', ":mwh0
   wd 'cc g isigraph flush'
   wd 'pshow'
-  adjwh^:('Android'-:UNAME) mwh0
 elseif. IFJA do.
   wd 'pc viewmat;pn *',TITLE
   wd 'wh _1 _1;cc g isigraph flush'
   wd 'pshow'
 end.
+EMPTY
 )
 adjwh=: 3 : 0
 wh0=. y
@@ -441,6 +446,7 @@ wdqdata=. (wdd ,. ".&.>wdd)
 evthandler wdqdata
 0
 )
+finalize_jviewmat_^:(3=(4!:0)@<) 'finalize_jviewmat_'
 viewmat_z_=: viewmat_jviewmat_
 viewbmp_z_=: viewbmp_jviewmat_
 viewpng_z_=: viewpng_jviewmat_

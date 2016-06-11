@@ -4,7 +4,7 @@ coclass 'jviewmat'
 
 coinsert 'jgl2 jni jaresu'
 3 : 0''
-if. 0~: 4!:0<'VIEWMATQUI' do.
+if. 0~: 4!:0<'VIEWMATGUI' do.
   VIEWMATGUI=: (IFQT +. IFJA) > IFJHS +. IFIOS
 end.
 EMPTY

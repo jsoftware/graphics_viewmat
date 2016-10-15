@@ -195,6 +195,7 @@ end.
 needresize=: 0
 )
 viewmat_g_paint=: 3 : 0
+glmark^:IFJA ''
 mat=. finite MAT
 'rws cls'=. $mat
 gwh=. glqwh''
@@ -208,7 +209,7 @@ end.
 if. #ANG do. mwh vf_show mat return. end.
 mat=. , mwh fitvm mat
 glpixels (0 0, mwh), setalpha mat
-glpaint^:IFJA ''
+glpaints^:IFJA ''
 SHOW=: 1
 EMPTY
 )

@@ -209,7 +209,7 @@ end.
 if. #ANG do. mwh vf_show mat return. end.
 mat=. , mwh fitvm mat
 glpixels (0 0, mwh), setalpha mat
-glpaints^:IFJA ''
+glcmds@gltrash^:IFJA ''
 SHOW=: 1
 EMPTY
 )

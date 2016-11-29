@@ -366,8 +366,7 @@ else.
     if. IFJHS do.
       r=. '~temp/',TITLE,'_',(}.jhsuqs''),'.png'
       (jpath r) frename jpath '~temp/',TITLE,'.png'
-      t=. '<img src="',r,(jhsuqs''),'"></img>'
-      jhtml t
+      jhspng r
     elseif. IFIOS do.
       uqs=. '?',((":6!:0'')rplc' ';'_';'.';'_')
       r=. '~temp/',TITLE,'_',(}.uqs),'.png'
@@ -381,6 +380,13 @@ else.
     end.
   end.
 end.
+)
+jhspng=: 3 : 0
+d=. fread y
+w=. 256#.a.i.4{.16}.d
+h=. 256#.a.i.4{.20}.d
+t=. '<img width=<WIDTH>px height=<HEIGHT>px src="<FILE><UQS>" ></img>'
+jhtml t hrplc_jhs_ 'WIDTH HEIGHT FILE UQS';w;h;y;jhsuqs''
 )
 viewmatcc=: 3 : 0
 '' viewmatcc y

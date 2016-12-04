@@ -3,9 +3,11 @@ require 'graphics/bmp graphics/gl2 graphics/png'
 coclass 'jviewmat'
 
 coinsert 'jgl2 jni jaresu'
+
+IFJNET=: (IFJNET"_)^:(0=4!:0<'IFJNET')0
 3 : 0''
 if. 0~: 4!:0<'VIEWMATGUI' do.
-  VIEWMATGUI=: (IFQT +. IFJA) > IFJHS +. IFIOS
+  VIEWMATGUI=: (IFQT +. IFJA +. IFJNET) > IFJHS +. IFIOS
 end.
 EMPTY
 )
@@ -417,7 +419,7 @@ else.
 end.
 )
 vmwin=: 3 : 0
-if. IFQT do.
+if. IFQT+.IFJNET do.
   wd 'pc viewmat;pn *',TITLE
   wd 'minwh ', ":mwh0
   wd 'cc g isigraph flush'

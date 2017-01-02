@@ -7,7 +7,7 @@ coinsert 'jgl2 jni jaresu'
 IFJNET=: (IFJNET"_)^:(0=4!:0<'IFJNET')0
 3 : 0''
 if. 0~: 4!:0<'VIEWMATGUI' do.
-  VIEWMATGUI=: (IFQT +. IFJA +. IFJNET) > IFJHS +. IFIOS
+  VIEWMATGUI=: (IFQT +. IFJA +. ((;:'jwin32 jjava')e.~<11!:0 ::0:'qwd')) > IFJHS +. IFIOS
 end.
 EMPTY
 )
@@ -419,7 +419,7 @@ else.
 end.
 )
 vmwin=: 3 : 0
-if. IFQT+.IFJNET do.
+if. IFQT do.
   wd 'pc viewmat;pn *',TITLE
   wd 'minwh ', ":mwh0
   wd 'cc g isigraph flush'
@@ -427,6 +427,11 @@ if. IFQT+.IFJNET do.
 elseif. IFJA do.
   wd 'pc viewmat;pn *',TITLE
   wd 'wh _1 _1;cc g isigraph flush'
+  wd 'pshow'
+elseif. do.
+  wd 'pc6j viewmat;pn *',TITLE
+  wd 'xywh ', ":0 0, <.@(*&0.5) mwh0
+  wd 'cc g isigraph'
   wd 'pshow'
 end.
 EMPTY
@@ -439,10 +444,12 @@ if. (%/wh0) < w%h do.
 else.
   w1=. w [ h1=. w % (%/wh0)
 end.
-if. IFJA do.
-  wd 'set g wh ',": <. (w1,h1) % DM_density_ja_
-else.
+if. IFQT do.
   wd 'set g wh ',":w1,h1
+elseif. IFJA do.
+  wd 'set g wh ',": <. (w1,h1) % DM_density_ja_
+elseif. do.
+  wd 'setxywhx g ',":0 0,w1,h1
 end.
 EMPTY
 )

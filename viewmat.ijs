@@ -176,7 +176,8 @@ ifRGB=: x -: 'rgb'
 if. 0 e. $MAT do. return. end.
 mat=. finite MAT
 'rws cls'=. $mat
-glsel gid
+glsel ":gid
+glnodblbuf 0
 mwh=. glqwh''
 if. #ANG do. mwh vf_show mat return. end.
 mat=. , mwh fitvm mat

@@ -1,0 +1,14 @@
+NB. project: ~Addons/graphics/viewmat/source/source
+NB.
+NB. defines list of source files.
+NB. path defaults to project directory.
+
+init.ijs
+util.ijs
+cc.ijs
+event.ijs
+field.ijs
+methods.ijs
+win.ijs
+finalize.ijs
+zdefs.ijs

@@ -25,6 +25,7 @@ NB. paint
 NB. SHOW is 0 = initial setting
 NB.         1 = resize
 viewmat_g_paint=: 3 : 0
+try.
 mat=. finite MAT
 'rws cls'=. $mat
 gwh=. glqwh''
@@ -41,6 +42,10 @@ glpixels (0 0, mwh), setalpha mat
 glpaintx^:IFJA ''  NB. asyncj
 SHOW=: 1
 EMPTY
+catch.
+viewmat_close''
+echo 13!:12''
+end.
 )
 
 NB. =========================================================

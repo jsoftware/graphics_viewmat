@@ -117,6 +117,7 @@ viewmat=: 3 : 0
 :
 a=. '' conew 'jviewmat'
 xx__a=: x [ yy__a=: y
+if. IFPLAY do. x viewmat_play y return. end.
 if. VIEWMATGUI do.
   empty vmrun__a ''
 else.
@@ -128,8 +129,6 @@ else.
     if. IFJHS do.
       r=. '~temp/',TITLE,'_',(}.jhsuqs''),'.png'
       (jpath r) frename jpath '~temp/',TITLE,'.png'
-NB.       t=. '<img src="',r,(jhsuqs''),'"></img>'
-NB.       jhtml t
       jhspng r
     elseif. IFIOS do.
 NB. somewhat unique query string - avoid cache - not quaranteed to be unique!
@@ -168,4 +167,18 @@ viewmatcc=: 3 : 0
 '' viewmatcc y
 :
 empty x vmcc y
+)
+
+NB. =========================================================
+NB. viewmat for playground
+viewmat_play=: 4 : 0
+a=. '' conew 'jviewmat'
+xx__a=: x [ yy__a=: y
+empty vmrun__a ''
+NB. (setalpha no_gui_bitmap__a'') writepng jpath '~temp/viewmat.png'
+(setalpha no_gui_bitmap__a'') writepng '/viewmat.png'
+destroy__a ''
+d=. tobase64_base_ fread '/viewmat.png'
+playhtml_j_=: '8',d
+(2!:0) getJS_j_
 )

@@ -5,6 +5,7 @@ coclass 'jviewmat'
 coinsert 'jgl2 jni jaresu'
 
 IFJNET=: (IFJNET"_)^:(0=4!:0<'IFJNET')0
+IFPLAY=: (IFPLAY"_)^:(0=4!:0<'IFPLAY')0
 3 : 0''
 if. 0~: 4!:0<'VIEWMATGUI' do.
   VIEWMATGUI=: (IFQT +. IFJA +. ((;:'jwin32 jjava')e.~<11!:0 ::0:'qwd')) > IFJHS +. IFIOS
@@ -362,6 +363,7 @@ viewmat=: 3 : 0
 :
 a=. '' conew 'jviewmat'
 xx__a=: x [ yy__a=: y
+if. IFPLAY do. x viewmat_play y return. end.
 if. VIEWMATGUI do.
   empty vmrun__a ''
 else.
@@ -399,6 +401,16 @@ viewmatcc=: 3 : 0
 '' viewmatcc y
 :
 empty x vmcc y
+)
+viewmat_play=: 4 : 0
+a=. '' conew 'jviewmat'
+xx__a=: x [ yy__a=: y
+empty vmrun__a ''
+(setalpha no_gui_bitmap__a'') writepng '/viewmat.png'
+destroy__a ''
+d=. tobase64_base_ fread '/viewmat.png'
+playhtml_j_=: '8',d
+(2!:0) getJS_j_
 )
 vmrun=: 3 : 0
 x=. xx [ y=. yy

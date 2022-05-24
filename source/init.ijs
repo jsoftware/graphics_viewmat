@@ -7,6 +7,7 @@ coclass 'jviewmat'
 coinsert 'jgl2 jni jaresu'
 
 IFJNET=: (IFJNET"_)^:(0=4!:0<'IFJNET')0
+IFPLAY=: (IFPLAY"_)^:(0=4!:0<'IFPLAY')0
 
 NB. no gui for jhs or iOS
 3 : 0''

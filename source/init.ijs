@@ -8,11 +8,13 @@ coinsert 'jgl2 jni jaresu'
 
 IFJNET=: (IFJNET"_)^:(0=4!:0<'IFJNET')0
 IFPLAY=: (IFPLAY"_)^:(0=4!:0<'IFPLAY')0
+IFIPAD=: (IFIPAD"_)^:(0=4!:0<'IFIPAD')0
+IFRETINA=: (IFRETINA"_)^:(0=4!:0<'IFRETINA')1
 
 NB. no gui for jhs or iOS
 3 : 0''
 if. 0~: 4!:0<'VIEWMATGUI' do.
-  VIEWMATGUI=: (IFQT +. IFJA +. ((;:'jwin32 jjava')e.~<11!:0 ::0:'qwd')) > IFJHS +. IFIOS
+  VIEWMATGUI=: (IFQT +. IFJA +. ((;:'jwin32 jjava')e.~<11!:0 ::0:'qwd')) > IFJHS +. IFIOS>IFQT
 end.
 EMPTY
 )

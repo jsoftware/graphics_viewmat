@@ -437,22 +437,32 @@ end.
 )
 vmwin=: 3 : 0
 if. IFQT do.
-  wd 'pc viewmat;pn *',TITLE
+  wd 'pc viewmat closeok;pn *',TITLE
+  wd 'menupop "&File";'
+  wd 'menu quit "&Quit" "Ctrl+Q" "" "";'
+  wd 'menupopz;'
   wd 'minwh ', ":mwh0
   wd 'cc g isigraph flush'
   wd 'pshow'
 elseif. IFJA do.
-  wd 'pc viewmat;pn *',TITLE
+  wd 'pc viewmat closeok;pn *',TITLE
+  wd 'menupop "&File";'
+  wd 'menu quit "&Quit" "Ctrl+Q" "" "";'
+  wd 'menupopz;'
   wd 'wh _1 _1;cc g isigraph flush'
   wd 'pshow'
 elseif. do.
-  wd 'pc6j viewmat;pn *',TITLE
+  wd 'pc6j viewmat closeok;pn *',TITLE
+  wd 'menupop "&File";'
+  wd 'menu quit "&Quit" "Ctrl+Q" "" "";'
+  wd 'menupopz;'
   wd 'xywh ', ":0 0, <.@(*&0.5) mwh0
   wd 'cc g isigraph'
   wd 'pshow'
 end.
 EMPTY
 )
+viewmat_quit_button=: wd bind 'pclose'
 adjwh=: 3 : 0
 wh0=. y
 'w h'=. 2}. ". wd 'qform'

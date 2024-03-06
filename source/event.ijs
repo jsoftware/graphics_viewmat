@@ -1,7 +1,7 @@
 NB. event
 
 NB. for use in labs...
-viewmat_jctrl_fkey=: 3 : 'labnext_jlab_ :: ] '''''
+viewmat_jctrl_fkey=: 3 : 'lab_jlab_ :: ] 0'
 
 NB. save png
 viewmat_sctrl_fkey=: 3 : 0
@@ -26,25 +26,25 @@ NB. SHOW is 0 = initial setting
 NB.         1 = resize
 viewmat_g_paint=: 3 : 0
 try.
-mat=. finite MAT
-'rws cls'=. $mat
-gwh=. glqwh''
-if. ifRGB > SHOW do.
-  glbrush glrgb 0 0 0
-  glrect 0 0,gwh
-  mwh=. cls,rws
-else.
-  mwh=. gwh
-end.
-if. #ANG do. mwh vf_show mat return. end.
-mat=. , mwh fitvm mat
-glpixels (0 0, mwh), setalpha mat
-glpaintx^:IFJA ''  NB. asyncj
-SHOW=: 1
-EMPTY
+  mat=. finite MAT
+  'rws cls'=. $mat
+  gwh=. glqwh''
+  if. ifRGB > SHOW do.
+    glbrush glrgb 0 0 0
+    glrect 0 0,gwh
+    mwh=. cls,rws
+  else.
+    mwh=. gwh
+  end.
+  if. #ANG do. mwh vf_show mat return. end.
+  mat=. , mwh fitvm mat
+  glpixels (0 0, mwh), setalpha mat
+  glpaintx^:IFJA ''  NB. asyncj
+  SHOW=: 1
+  EMPTY
 catch.
-viewmat_close''
-echo 13!:12''
+  viewmat_close''
+  echo 13!:12''
 end.
 )
 

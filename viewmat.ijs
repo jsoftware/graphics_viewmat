@@ -186,7 +186,7 @@ if. #ANG do. mwh vf_show mat return. end.
 mat=. , mwh fitvm mat
 glpixels (0 0, mwh), mat (27 b.) 16bffffff
 )
-viewmat_jctrl_fkey=: 3 : 'labnext_jlab_ :: ] '''''
+viewmat_jctrl_fkey=: 3 : 'lab_jlab_ :: ] 0'
 viewmat_sctrl_fkey=: 3 : 0
 fl=. jpath '~temp/',TITLE,'.png'
 wd 'psel viewmat'
@@ -202,25 +202,25 @@ needresize=: 0
 )
 viewmat_g_paint=: 3 : 0
 try.
-mat=. finite MAT
-'rws cls'=. $mat
-gwh=. glqwh''
-if. ifRGB > SHOW do.
-  glbrush glrgb 0 0 0
-  glrect 0 0,gwh
-  mwh=. cls,rws
-else.
-  mwh=. gwh
-end.
-if. #ANG do. mwh vf_show mat return. end.
-mat=. , mwh fitvm mat
-glpixels (0 0, mwh), setalpha mat
-glpaintx^:IFJA ''
-SHOW=: 1
-EMPTY
+  mat=. finite MAT
+  'rws cls'=. $mat
+  gwh=. glqwh''
+  if. ifRGB > SHOW do.
+    glbrush glrgb 0 0 0
+    glrect 0 0,gwh
+    mwh=. cls,rws
+  else.
+    mwh=. gwh
+  end.
+  if. #ANG do. mwh vf_show mat return. end.
+  mat=. , mwh fitvm mat
+  glpixels (0 0, mwh), setalpha mat
+  glpaintx^:IFJA ''
+  SHOW=: 1
+  EMPTY
 catch.
-viewmat_close''
-echo 13!:12''
+  viewmat_close''
+  echo 13!:12''
 end.
 )
 viewmat_close=: 3 : 0

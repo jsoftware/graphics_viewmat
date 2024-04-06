@@ -6,7 +6,7 @@ DESCRIPTION=: 0 : 0
 Viewmat displays tables of data graphically.
 )
 
-VERSION=: '1.0.89'
+VERSION=: '1.0.90'
 
 RELEASE=: 'j805'
 
@@ -21,5 +21,4 @@ graphics/png
 
 FILES=: 0 : 0
 viewmat.ijs
-history.txt
 )

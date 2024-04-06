@@ -186,7 +186,7 @@ if. #ANG do. mwh vf_show mat return. end.
 mat=. , mwh fitvm mat
 glpixels (0 0, mwh), mat (27 b.) 16bffffff
 )
-viewmat_jctrl_fkey=: 3 : 'lab_jlab_ :: ] 0'
+viewmat_jctrl_fkey=: 3 : 'lab_jlab_ 0'
 viewmat_sctrl_fkey=: 3 : 0
 fl=. jpath '~temp/',TITLE,'.png'
 wd 'psel viewmat'

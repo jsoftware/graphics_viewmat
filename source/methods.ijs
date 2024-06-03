@@ -43,8 +43,8 @@ fms=. hforms''
 if. 0=#fms
 do. sminfo 'viewmat';'No viewmat forms.' return.
 end.
-wd 'psel ',(<0 1) pick fms
-(getbitmap'') writepng fl
+loc=. (<0 2) { fms
+(setalpha no_gui_bitmap__loc '') writepng fl
 )
 
 NB. =========================================================

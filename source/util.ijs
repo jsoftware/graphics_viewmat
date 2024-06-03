@@ -156,7 +156,9 @@ NB.
 NB. returns viewmat forms, in order of recent activity
 hforms=: 3 : 0
 fms=. <;._2 &> <;._2 wdqpx''
+if. 0=#fms do. empty '' return. end.
 fms=. fms #~ (2{"1 fms) e. VMH
+if. 0=#fms do. empty '' return. end.
 fms \: 0 ". &> 4{"1 fms
 )
 

@@ -153,7 +153,9 @@ hcascade=: 3 : 0
 )
 hforms=: 3 : 0
 fms=. <;._2 &> <;._2 wdqpx''
+if. 0=#fms do. empty '' return. end.
 fms=. fms #~ (2{"1 fms) e. VMH
+if. 0=#fms do. empty '' return. end.
 fms \: 0 ". &> 4{"1 fms
 )
 hremove=: 3 : 0
@@ -331,8 +333,8 @@ fms=. hforms''
 if. 0=#fms
 do. sminfo 'viewmat';'No viewmat forms.' return.
 end.
-wd 'psel ',(<0 1) pick fms
-(getbitmap'') writepng fl
+loc=. (<0 2) { fms
+(setalpha no_gui_bitmap__loc '') writepng fl
 )
 setsize=: 3 : 0
 fms=. hforms''

@@ -191,7 +191,6 @@ glpixels (0 0, mwh), mat (27 b.) 16bffffff
 viewmat_jctrl_fkey=: 3 : 'lab_jlab_ 0'
 viewmat_sctrl_fkey=: 3 : 0
 fl=. jpath '~temp/',TITLE,'.png'
-wd 'psel viewmat'
 (getbitmap'') writepng fl
 )
 viewmat_g_resize=: 3 : 0
@@ -321,8 +320,8 @@ fms=. hforms''
 if. 0=#fms do.
   sminfo 'viewmat';'No viewmat forms.' return.
 end.
-wd 'psel ',(<0 1) pick fms
-getbitmap''
+loc=. (<0 2) { fms
+setalpha no_gui_bitmap__loc ''
 )
 savemat=: 3 : 0
 fl=. y

@@ -6,7 +6,6 @@ viewmat_jctrl_fkey=: 3 : 'lab_jlab_ 0'
 NB. save png
 viewmat_sctrl_fkey=: 3 : 0
 fl=. jpath '~temp/',TITLE,'.png'
-wd 'psel viewmat'
 (getbitmap'') writepng fl
 )
 

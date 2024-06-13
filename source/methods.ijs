@@ -3,8 +3,12 @@ NB. viewmat methods
 NB. =========================================================
 NB.*closeall v close all viewmat windows
 closeall=: 3 : 0
-for_loc. setvmh VMH do.
-  viewmat_close__loc''
+for_fm. hforms'' do.
+  id=. > 1 { fm
+  loc=. 2 { fm
+  hremove__loc''
+  wd 'psel ',id,';pclose'
+  destroy__loc''
 end.
 )
 

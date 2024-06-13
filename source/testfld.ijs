@@ -1,6 +1,28 @@
-NB. test viewmat field view
+NB. Run in Edit window.
+load 'trig viewmat png'
 
-require 'trig graphics/viewmat'
+count_unique=: #@~.@,
+
+NB. =========================================================
+NB. Basic test suite
+BTS=: 3 : 0
+closeall_jviewmat_ ''
+assert. EMPTY -: hforms_jviewmat_ ''
+viewmat (i. 2 2) ; 'A'
+viewmat (i. 3 3) ; 'B'
+setsize_jviewmat_ 500 500
+assert. 500 500 -: getsize_jviewmat_ ''
+assert. 9 -: count_unique readmat_jviewmat_ ''
+assert. 2 -: # hforms_jviewmat_ ''
+closeall_jviewmat_ ''
+assert. EMPTY -: hforms_jviewmat_ ''
+viewmat i. 4 4
+savemat_jviewmat_ ''
+mat=: readpng jpath '~temp/viewmat.png'
+assert. mat -: readmat_jviewmat_ ''
+closeall_jviewmat_ ''
+assert. EMPTY -: hforms_jviewmat_ ''
+)
 
 NB.*jjota v complex i.
 NB.   jjota 3 4
@@ -34,8 +56,7 @@ jjota 3 4
 viewmat |. jjota 3 4
 jiota 2 2
 viewmat |. jiota 20 20
-
-viewmat |. lvp_jviewmat _0j7 + 2j0.125 *&.+. jjota 40 40
 )
 
+BTS ''
 0!:100 OTS

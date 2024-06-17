@@ -3,8 +3,12 @@ NB. viewmat methods
 NB. =========================================================
 NB.*closeall v close all viewmat windows
 closeall=: 3 : 0
-for_loc. setvmh VMH do.
-  viewmat_close__loc''
+for_fm. hforms'' do.
+  id=. > 1 { fm
+  loc=. 2 { fm
+  hremove__loc''
+  wd 'psel ',id,';pclose'
+  destroy__loc''
 end.
 )
 
@@ -28,8 +32,8 @@ fms=. hforms''
 if. 0=#fms do.
   sminfo 'viewmat';'No viewmat forms.' return.
 end.
-wd 'psel ',(<0 1) pick fms
-getbitmap''
+loc=. (<0 2) { fms
+setalpha no_gui_bitmap__loc ''
 )
 
 NB. =========================================================

@@ -58,6 +58,8 @@ NB. y is 0 = initial setting
 NB.       1 = resize
 vf_show=: 4 : 0
 
+ang=. tomatrix ANG
+
 mwh=. x
 mat=. y
 'rws cls'=. $mat
@@ -80,17 +82,17 @@ mid=. x j."1 0 y
 if. len < 3 do.
 elseif. len e. 3 4 do.
   pixel=. _1 + i.len
-  glpixel _2 [\ , rndint +."1 mid + + ANG */ pixel
+  glpixel _2 [\ , rndint +."1 mid + + ang */ pixel
 elseif. len < 20 do.
   ext=. -: len * 0.75
   lines=. ext ,. (-ext), ext - ext * 0.7 * 1j0.8
-  gllines _4 [\ , rndint +."1 mid + + ANG */ lines
+  gllines _4 [\ , rndint +."1 mid + + ang */ lines
 elseif. do.
   ext=. -: len * 0.75
   lines=. ext , -ext
-  gllines _4 [\ , rndint +."1 mid + + ANG */ lines
+  gllines _4 [\ , rndint +."1 mid + + ang */ lines
   poly=. ext - 0,(10 <. len*0.2) * 1j0.6,0.6,1j_0.6
-  glpolygon _8 [\ , rndint +."1 mid + + ANG */ poly
+  glpolygon _8 [\ , rndint +."1 mid + + ang */ poly
 end.
 
 )

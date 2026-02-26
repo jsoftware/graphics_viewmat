@@ -68,7 +68,7 @@ getvm=: 4 : 0
 tit=. ": tit
 tit=. tit, (0=#tit) # 'viewmat'
 if. ifRGB do.
-  mat=. dat
+  mat=. <. dat
   ang=. ''
 else.
   'mat ang'=. x getvm1 dat

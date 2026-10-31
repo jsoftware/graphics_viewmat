@@ -13,4 +13,3 @@ f=. 3 : 0
 )
 
 f 'manifest.ijs'
-f 'history.txt'

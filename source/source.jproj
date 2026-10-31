@@ -4,6 +4,7 @@ NB. defines list of source files.
 NB. path defaults to project directory.
 
 init.ijs
+colormap.ijs
 util.ijs
 cc.ijs
 event.ijs

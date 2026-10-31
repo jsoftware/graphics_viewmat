@@ -111,6 +111,9 @@ NB.
 NB. hue is: 3 column table of R-G-B triplets
 NB.     or: list of RGB values
 NB.     or: 'rgb'  - mat is an matrix of RGB values
+NB.     or: or a string naming a color map based on
+NB.         python's matplotlib.
+NB.         see the COLORMAPS variable for options
 NB.
 NB. if mat is boolean, x defaults to black/white
 NB. otherwise hue defaults to red - purple spectrum
